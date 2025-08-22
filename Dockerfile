@@ -13,7 +13,7 @@ WORKDIR /app
 RUN mvn clean package -DskipTests
 
 # Copy the jar file into the container
-COPY AmazonApp/target/AmazonApp-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder AmazonApp/target/AmazonApp-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application port (default for Spring Boot is 8080)
 EXPOSE 8080
